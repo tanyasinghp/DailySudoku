@@ -1,0 +1,611 @@
+@import "tailwindcss" source(none);
+@source "../src";
+@import "tw-animate-css";
+
+@custom-variant dark (&:is(.dark *));
+
+/*
+ * Sudoku design system — inherited from the original Cleverly language.
+ * Warm editorial neutrals, rounded geometry, generous space, no harsh borders.
+ */
+
+@theme inline {
+  --font-display: "Bricolage Grotesque", ui-sans-serif, system-ui, sans-serif;
+  --font-sans: "DM Sans", ui-sans-serif, system-ui, sans-serif;
+  --radius-sm: calc(var(--radius) - 8px);
+  --radius-md: calc(var(--radius) - 4px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 6px);
+  --radius-2xl: calc(var(--radius) + 12px);
+  --radius-3xl: calc(var(--radius) + 20px);
+  --radius-4xl: calc(var(--radius) + 30px);
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-ring-offset-background: var(--background);
+  --color-mood: var(--mood-bg);
+  --color-mood-deep: var(--mood-bg-2);
+  --color-mood-figure: var(--mood-figure);
+  --color-mood-ink: var(--mood-ink);
+  --color-cream: var(--cream);
+  --color-ink: var(--ink);
+  --color-sun: var(--sun);
+  --color-berry: var(--berry);
+  --color-sky: var(--sky);
+  --color-leaf: var(--leaf);
+  --color-lilac: var(--lilac);
+}
+
+:root {
+  --radius: 1.15rem;
+  --shadow-soft: 0 12px 34px -18px oklch(0.3 0.05 60 / 0.3);
+  --shadow-lifted: 0 28px 60px -26px oklch(0.3 0.05 60 / 0.38);
+  color-scheme: light;
+
+  /* Puzzle theme accents */
+  --mood-bg: oklch(0.93 0.05 60);
+  --mood-bg-2: oklch(0.88 0.08 45);
+  --mood-figure: oklch(0.67 0.19 42);
+  --mood-ink: oklch(0.24 0.05 45);
+
+  --cream: oklch(0.975 0.012 90);
+  --ink: oklch(0.19 0.02 60);
+  --sun: oklch(0.87 0.155 88);
+  --berry: oklch(0.74 0.14 12);
+  --sky: oklch(0.79 0.1 240);
+  --leaf: oklch(0.75 0.12 155);
+  --lilac: oklch(0.81 0.09 300);
+
+  --background: oklch(0.975 0.012 90);
+  --foreground: oklch(0.19 0.02 60);
+  --card: oklch(1 0 0);
+  --card-foreground: oklch(0.19 0.02 60);
+  --popover: oklch(1 0 0);
+  --popover-foreground: oklch(0.19 0.02 60);
+  --primary: oklch(0.21 0.02 60);
+  --primary-foreground: oklch(0.985 0.01 90);
+  --secondary: oklch(0.95 0.018 88);
+  --secondary-foreground: oklch(0.21 0.02 60);
+  --muted: oklch(0.955 0.014 88);
+  --muted-foreground: oklch(0.52 0.02 66);
+  --accent: oklch(0.87 0.155 88);
+  --accent-foreground: oklch(0.21 0.02 60);
+  --destructive: oklch(0.6 0.2 25);
+  --destructive-foreground: oklch(0.99 0.005 90);
+  --border: oklch(0.925 0.014 84);
+  --input: oklch(0.925 0.014 84);
+  --ring: oklch(0.78 0.09 70);
+}
+
+.dark {
+  color-scheme: dark;
+  --shadow-soft: 0 12px 34px -18px oklch(0 0 0 / 0.6);
+  --shadow-lifted: 0 30px 66px -26px oklch(0 0 0 / 0.72);
+
+  --mood-bg: oklch(0.32 0.03 60);
+  --mood-bg-2: oklch(0.26 0.03 45);
+  --mood-figure: oklch(0.7 0.17 42);
+  --mood-ink: oklch(0.96 0.014 90);
+
+  --cream: oklch(0.96 0.014 90);
+  --ink: oklch(0.15 0.014 60);
+  --sun: oklch(0.83 0.15 88);
+  --berry: oklch(0.72 0.15 12);
+  --sky: oklch(0.76 0.11 240);
+  --leaf: oklch(0.73 0.13 155);
+  --lilac: oklch(0.79 0.1 300);
+
+  --background: oklch(0.185 0.014 62);
+  --foreground: oklch(0.955 0.012 90);
+  --card: oklch(0.235 0.016 62);
+  --card-foreground: oklch(0.955 0.012 90);
+  --popover: oklch(0.235 0.016 62);
+  --popover-foreground: oklch(0.955 0.012 90);
+  --primary: oklch(0.94 0.014 90);
+  --primary-foreground: oklch(0.2 0.018 62);
+  --secondary: oklch(0.285 0.018 62);
+  --secondary-foreground: oklch(0.955 0.012 90);
+  --muted: oklch(0.285 0.018 62);
+  --muted-foreground: oklch(0.76 0.016 74);
+  --accent: oklch(0.83 0.15 88);
+  --accent-foreground: oklch(0.2 0.018 62);
+  --destructive: oklch(0.62 0.19 25);
+  --destructive-foreground: oklch(0.98 0.006 90);
+  --border: oklch(0.34 0.018 62);
+  --input: oklch(0.34 0.018 62);
+  --ring: oklch(0.8 0.1 78);
+}
+
+@utility display-hero {
+  font-family: var(--font-display);
+  font-weight: 800;
+  letter-spacing: -0.035em;
+  line-height: 0.92;
+  font-size: clamp(2.6rem, 6.2vw, 5.25rem);
+}
+
+@utility display-lg {
+  font-family: var(--font-display);
+  font-weight: 800;
+  letter-spacing: -0.028em;
+  line-height: 0.98;
+  font-size: clamp(1.9rem, 4vw, 3.25rem);
+}
+
+@utility display-md {
+  font-family: var(--font-display);
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  line-height: 1.08;
+  font-size: clamp(1.3rem, 2.2vw, 1.85rem);
+}
+
+@utility display-sm {
+  font-family: var(--font-display);
+  font-weight: 700;
+  letter-spacing: -0.015em;
+  line-height: 1.15;
+  font-size: clamp(1.05rem, 1.4vw, 1.25rem);
+}
+
+@utility body-lead {
+  font-size: clamp(1rem, 1.15vw, 1.15rem);
+  line-height: 1.6;
+}
+
+@utility surface-card {
+  background-color: var(--card);
+  border-radius: var(--radius-4xl);
+  box-shadow: var(--shadow-soft);
+}
+
+@utility lift {
+  transition:
+    transform 0.4s cubic-bezier(0.22, 1, 0.36, 1),
+    box-shadow 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+  &:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--shadow-lifted);
+  }
+}
+
+@utility press {
+  transition: transform 0.2s cubic-bezier(0.22, 1, 0.36, 1);
+  &:active {
+    transform: scale(0.97);
+  }
+}
+
+@utility mood-surface {
+  background: radial-gradient(125% 95% at 50% -5%, var(--mood-bg) 0%, var(--mood-bg-2) 100%);
+  transition:
+    --mood-bg 0.8s ease,
+    background-color 0.8s ease;
+}
+
+@utility focus-ring {
+  &:focus-visible {
+    outline: 3px solid var(--ring);
+    outline-offset: 3px;
+  }
+}
+
+@keyframes rise-in {
+  from {
+    opacity: 0;
+    transform: translateY(14px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@utility rise {
+  animation: rise-in 0.6s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+/* ---------------- Enter-the-game transition (< 300ms) ---------------- */
+
+@keyframes stage-veil {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes stage-board-in {
+  from {
+    opacity: 0;
+    transform: scale(0.94);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes stage-up {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@utility stage-enter {
+  animation: stage-veil 0.16s ease-out both;
+}
+
+@utility stage-board {
+  animation: stage-board-in 0.26s cubic-bezier(0.22, 1, 0.36, 1) both;
+  animation-delay: 0.04s;
+}
+
+@utility stage-chrome {
+  animation: stage-up 0.22s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+@utility stage-controls {
+  animation: stage-up 0.24s cubic-bezier(0.22, 1, 0.36, 1) both;
+  animation-delay: 0.1s;
+}
+
+/* ---------------- Game system ---------------- */
+
+@keyframes cell-pop {
+  0% {
+    transform: scale(0.55);
+    opacity: 0;
+  }
+  62% {
+    transform: scale(1.12);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+@utility cell-pop {
+  animation: cell-pop 0.42s cubic-bezier(0.34, 1.56, 0.64, 1) both;
+}
+
+@keyframes soft-glow {
+  0%,
+  100% {
+    opacity: 0.28;
+    transform: scale(0.94);
+  }
+  50% {
+    opacity: 0.85;
+    transform: scale(1.02);
+  }
+}
+
+@utility hint-glow {
+  animation: soft-glow 1.9s ease-in-out infinite both;
+}
+
+@keyframes tick-in {
+  0% {
+    stroke-dashoffset: 24;
+    opacity: 0;
+  }
+  35% {
+    opacity: 1;
+  }
+  100% {
+    stroke-dashoffset: 0;
+    opacity: 1;
+  }
+}
+
+@utility tick-in {
+  stroke-dasharray: 24;
+  animation: tick-in 0.5s cubic-bezier(0.65, 0, 0.35, 1) 0.1s both;
+}
+
+@keyframes confetti-fall {
+  0% {
+    opacity: 0;
+    transform: translate3d(0, -18vh, 0) rotate(0deg);
+  }
+  10% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+    transform: translate3d(var(--drift, 0px), 96vh, 0) rotate(620deg);
+  }
+}
+
+@utility confetti-piece {
+  animation: confetti-fall var(--dur, 3.2s) cubic-bezier(0.3, 0.6, 0.5, 1) var(--delay, 0s) both;
+}
+
+@keyframes card-in {
+  from {
+    opacity: 0;
+    transform: translateY(26px) scale(0.96);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@utility card-in {
+  animation: card-in 0.55s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+@keyframes veil-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@utility veil-in {
+  animation: veil-in 0.45s ease-out both;
+}
+
+/* ---------------- Sudoku board ---------------- */
+
+@utility slate-board {
+  background: radial-gradient(
+    130% 110% at 50% -10%,
+    oklch(0.31 0.02 62) 0%,
+    oklch(0.225 0.018 60) 100%
+  );
+  box-shadow:
+    inset 0 1px 0 oklch(1 0 0 / 0.08),
+    var(--shadow-lifted);
+}
+
+.dark .slate-board {
+  background: radial-gradient(
+    130% 110% at 50% -10%,
+    oklch(0.275 0.02 62) 0%,
+    oklch(0.195 0.016 60) 100%
+  );
+  box-shadow:
+    inset 0 1px 0 oklch(1 0 0 / 0.06),
+    0 0 0 1px oklch(1 0 0 / 0.05),
+    var(--shadow-lifted);
+}
+
+@keyframes value-in {
+  0% {
+    transform: scale(0.7);
+    opacity: 0;
+  }
+  60% {
+    transform: scale(1.09);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+@utility value-in {
+  animation: value-in 0.34s cubic-bezier(0.34, 1.4, 0.64, 1) both;
+}
+
+@keyframes confirm-bloom {
+  0% {
+    opacity: 0;
+    transform: scale(0.75);
+  }
+  40% {
+    opacity: 0.9;
+  }
+  100% {
+    opacity: 0;
+    transform: scale(1.25);
+  }
+}
+
+@utility confirm-bloom {
+  animation: confirm-bloom 0.85s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+@keyframes unit-sweep {
+  0% {
+    opacity: 0;
+    transform: scale(0.9);
+  }
+  28% {
+    opacity: 1;
+    transform: scale(1.04);
+  }
+  60% {
+    opacity: 0.7;
+    transform: scale(1);
+  }
+  100% {
+    opacity: 0;
+    transform: scale(1);
+  }
+}
+
+@utility unit-sweep {
+  animation: unit-sweep 1.05s cubic-bezier(0.22, 1, 0.36, 1) var(--delay, 0s) both;
+}
+
+@keyframes stripe-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@utility conflict-stripes {
+  background-image: repeating-linear-gradient(
+    -45deg,
+    color-mix(in oklab, var(--berry) 62%, transparent) 0px,
+    color-mix(in oklab, var(--berry) 62%, transparent) 2px,
+    transparent 2px,
+    transparent 7px
+  );
+  animation: stripe-in 0.35s ease-out both;
+}
+
+@keyframes note-in {
+  from {
+    opacity: 0;
+    transform: scale(0.6);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@utility note-in {
+  animation: note-in 0.22s cubic-bezier(0.34, 1.4, 0.64, 1) both;
+}
+
+@layer base {
+  * {
+    border-color: var(--color-border);
+  }
+
+  html {
+    -webkit-text-size-adjust: 100%;
+  }
+
+  body {
+    background-color: var(--color-background);
+    color: var(--color-foreground);
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+  }
+
+  ::selection {
+    background: var(--sun);
+    color: var(--ink);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+  }
+}
+
+/* Daily streak flourishes */
+@keyframes flame-flicker {
+  0%,
+  100% {
+    transform: scale(1) rotate(-2deg);
+  }
+  50% {
+    transform: scale(1.14) rotate(3deg);
+  }
+}
+
+.flame-flicker {
+  display: inline-block;
+  animation: flame-flicker 1.8s ease-in-out infinite;
+}
+
+@keyframes milestone-pop {
+  0% {
+    opacity: 0;
+    transform: scale(0.7) translateY(6px);
+  }
+  60% {
+    opacity: 1;
+    transform: scale(1.07) translateY(0);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.milestone-pop {
+  animation: milestone-pop 0.6s cubic-bezier(0.22, 1, 0.36, 1) 0.25s both;
+}
+
+/* ---------------- Sudoku loading animation ---------------- */
+
+@keyframes loader-tile-in {
+  0%,
+  8% {
+    opacity: 0.22;
+    transform: translateY(8px) scale(0.82);
+    color: transparent;
+  }
+  26%,
+  62% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+    color: var(--mood-figure, var(--foreground));
+  }
+  86%,
+  100% {
+    opacity: 0.22;
+    transform: translateY(-6px) scale(0.9);
+    color: transparent;
+  }
+}
+
+.loader-tile {
+  animation: loader-tile-in 2.2s cubic-bezier(0.22, 1, 0.36, 1) infinite both;
+  animation-delay: var(--tile-delay, 0s);
+}
+
+@keyframes loader-veil-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.loader-veil {
+  background: color-mix(in oklab, var(--background) 72%, transparent);
+  animation: loader-veil-in 0.22s ease-out both;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .loader-tile {
+    animation-duration: 0.01ms;
+    animation-iteration-count: 1;
+    opacity: 1;
+  }
+}
