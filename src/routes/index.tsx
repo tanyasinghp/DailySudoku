@@ -43,19 +43,22 @@ function Landing() {
       <section className="mx-auto grid max-w-[1400px] items-center gap-8 px-5 pt-4 pb-16 md:px-10 lg:grid-cols-[1.05fr_1fr] lg:gap-16 lg:pt-10">
         <div className="rise order-2 lg:order-1">
           <p className="text-muted-foreground text-sm font-semibold tracking-[0.18em] uppercase">
-            Pattern recognition · Clever
+            Sudoku · Logic · Focus
           </p>
-          <h1 className="display-hero mt-5 max-w-[15ch]">A calm challenge you can take slowly.</h1>
+          <h1 className="display-hero mt-5 max-w-[15ch]">
+            Sharpen your mind, one puzzle at a time.
+          </h1>
           <p className="body-lead text-muted-foreground mt-6 max-w-[46ch]">
-            One of each. No repeats. Patience wins. Fill every row, column and small box with
-            1–6 — in about ten unhurried minutes.
+            Enjoy crafted Sudoku puzzles with multiple difficulty levels,
+            daily streaks, and seamless progress saving. Whether you're just starting
+            out or love a challenge, there's always a fresh puzzle waiting.
           </p>
           <div className="mt-9 flex flex-wrap items-center gap-3">
             <Link
               to="/play"
               className="bg-primary text-primary-foreground press focus-ring rounded-full px-7 py-4 text-base font-semibold"
             >
-              Start today's board →
+              Start Playing →
             </Link>
           </div>
         </div>
